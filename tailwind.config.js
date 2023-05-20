@@ -7,14 +7,20 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    colors: {
-      primary_dark: "#141414",
-      secondary_dark: "#0f1629",
-      primary_gray: "#e1e7ef",
-      secondary_gray: "#f1f5f9",
-      background: "#030711",
-    },
     extend: {
+      screens: {
+        sm: "600px",
+        md: "810px",
+        lg: "1440px",
+        // xl: "1440px",
+      },
+      colors: {
+        "background-dark": "#030711",
+        "primary-dark": "#141414",
+        "secondary-dark": "#0f1629",
+        "primary-light": "#e1e7ef",
+        "secondary-light": "#f1f5f9",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

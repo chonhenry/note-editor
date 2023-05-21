@@ -1,6 +1,7 @@
 import { RxAvatar } from "react-icons/rx";
 import { TbBrandNextjs } from "react-icons/tb";
-import { FaReact, FaDatabase, FaCcStripe, FaStripeS } from "react-icons/fa";
+import { FaReact, FaDatabase } from "react-icons/fa";
+import { BsShieldLockFill } from "react-icons/bs";
 import { SiTailwindcss, SiStripe } from "react-icons/si";
 
 interface Props {
@@ -15,7 +16,8 @@ const Feature: React.FC<Props> = ({ logo, name, description }) => {
     if (logo === "react") return <FaReact className="text-5xl" />;
     if (logo === "database") return <FaDatabase className="text-5xl" />;
     if (logo === "tailwindcss") return <SiTailwindcss className="text-5xl" />;
-    if (logo === "authentication") return <RxAvatar className="text-5xl" />;
+    if (logo === "authentication")
+      return <BsShieldLockFill className="text-5xl" />;
     return <SiStripe className="text-5xl" />;
   }
 

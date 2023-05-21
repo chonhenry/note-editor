@@ -1,6 +1,6 @@
 "use client";
 
-import { useTheme } from "next-themes";
+import Image from "next/image";
 import Feature from "@/components/Feature";
 
 const features = [
@@ -42,8 +42,8 @@ export default function Home() {
     <main className="">
       <section className="text-center py-5 sm:py-10 md:py-32 px-10 mx-auto max-w-[1200px]">
         <p className="text-2xl font-semibold sm:text-4xl md:text-7xl mb-10 dark:text-primary-light">
-          Welcome to NoteEdit, your personalized digital hub for intuitive
-          note-taking.
+          Welcome to <span className="italic">NoteEdit</span>, your personalized
+          digital hub for intuitive note-taking.
         </p>
         <button className="rounded-lg py-3 px-9 bg-primary-dark text-primary-light dark:bg-primary-light dark:text-primary-dark">
           Get Started
@@ -95,7 +95,7 @@ export default function Home() {
           </div>
 
           <div className="text-left p-5 w-full mb-5 sm:mb-0 border rounded-lg dark:border-secondary-light flex flex-col">
-            <div className="text-xl font-semibold mb-2">Free</div>
+            <div className="text-xl font-semibold mb-2">Pro - $4.99/mo</div>
             <ul className="text-sm text-secondary-light list-disc flex-auto">
               <li className="ms-3">All Free Plan Features</li>
               <li className="ms-3">

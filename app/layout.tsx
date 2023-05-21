@@ -2,6 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/Navbar";
+import AuthProvider from "@/components/AuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,13 +17,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <body className={`${inter.className} bg-white dark:bg-background-dark`}>
-          <Navbar />
-          {children}
-        </body>
-      </ThemeProvider>
-    </html>
+    <AuthProvider>
+      <html lang="en" suppressHydrationWarning>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <body
+            className={`${inter.className} bg-white dark:bg-background-dark`}
+          >
+            <Navbar />
+            {children}
+          </body>
+        </ThemeProvider>
+      </html>
+    </AuthProvider>
   );
 }

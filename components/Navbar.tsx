@@ -5,15 +5,23 @@ import { useTheme } from "next-themes";
 import { TfiWrite } from "react-icons/tfi";
 import { BsSun } from "react-icons/bs";
 import { TbMoonStars } from "react-icons/tb";
-import LoginModal from "./LoginModal";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const Navbar = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const { theme, setTheme } = useTheme();
+  const { data: session, status } = useSession();
 
   const toggleTheme = () => {
     if (theme === "light") setTheme("dark");
     else setTheme("light");
+  };
+
+  const handleAuth = () => {
+    if (status === "unauthenticated") {
+      return <span onClick={() => signIn()}>Login</span>;
+    }
+    return <span onClick={() => signOut()}>Logout</span>;
   };
 
   return (
@@ -28,13 +36,9 @@ const Navbar = () => {
         <div className="cursor-pointer mr-5 text-2xl" onClick={toggleTheme}>
           {theme === "light" ? <BsSun /> : <TbMoonStars />}
         </div>
-        <div
-          className="bg-primary-light dark:bg-secondary-dark cursor-pointer text-sm rounded-lg py-2 px-5"
-          onClick={() => setShowLoginModal((prev) => !prev)}
-        >
-          Login
+        <div className="bg-primary-light dark:bg-secondary-dark cursor-pointer text-sm rounded-lg py-2 px-5">
+          {status === "loading" ? <span>Loading</span> : handleAuth()}
         </div>
-        {showLoginModal && <LoginModal />}
       </div>
     </nav>
   );

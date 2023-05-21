@@ -4,6 +4,7 @@ import Feature from "@/components/Feature";
 import { useTheme } from "next-themes";
 import { BsSun } from "react-icons/bs";
 import { TbMoonStars } from "react-icons/tb";
+import { useSession } from "next-auth/react";
 
 const features = [
   {
@@ -41,6 +42,7 @@ const features = [
 
 export default function Home() {
   const { theme, setTheme } = useTheme();
+  const { data: session, status } = useSession();
 
   const toggleTheme = () => {
     if (theme === "light") setTheme("dark");
@@ -49,6 +51,8 @@ export default function Home() {
 
   return (
     <main className="">
+      <div>session: {session?.user?.name}</div>
+      <div>status: {status}</div>
       <section className="text-center py-5 sm:py-10 md:py-32 px-10 mx-auto max-w-[1200px]">
         <p className="text-2xl font-semibold sm:text-4xl md:text-7xl mb-10 dark:text-primary-light">
           Welcome to <span className="italic">NoteEdit</span>, your personalized

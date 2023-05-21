@@ -1,7 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Feature from "@/components/Feature";
+import { useTheme } from "next-themes";
+import { BsSun } from "react-icons/bs";
+import { TbMoonStars } from "react-icons/tb";
 
 const features = [
   {
@@ -38,6 +40,13 @@ const features = [
 ];
 
 export default function Home() {
+  const { theme, setTheme } = useTheme();
+
+  const toggleTheme = () => {
+    if (theme === "light") setTheme("dark");
+    else setTheme("light");
+  };
+
   return (
     <main className="">
       <section className="text-center py-5 sm:py-10 md:py-32 px-10 mx-auto max-w-[1200px]">
@@ -113,8 +122,13 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="text-secondary-light text-center p-5">
-        The source code is available on my GitHub.
+      <footer className="text-secondary-light text-center p-5 flex flex-col sm:flex-row items-center justify-center">
+        <div className="mb-5 sm:mr-10 sm:mb-0">
+          The source code is available on my GitHub.
+        </div>
+        <div className="text-xl cursor-pointer" onClick={toggleTheme}>
+          {theme === "light" ? <BsSun /> : <TbMoonStars />}
+        </div>
       </footer>
     </main>
   );

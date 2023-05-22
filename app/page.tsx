@@ -4,7 +4,10 @@ import Feature from "@/components/Feature";
 import { useTheme } from "next-themes";
 import { BsSun } from "react-icons/bs";
 import { TbMoonStars } from "react-icons/tb";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
+import Link from "next/link";
 
 const features = [
   {
@@ -49,18 +52,33 @@ export default function Home() {
     else setTheme("light");
   };
 
+  if (status === "loading") {
+    return (
+      <div className="flex flex-col items-center text-2xl">
+        <AiOutlineLoading3Quarters className="animate-spin" />
+        <div className="mt-5">Loading...</div>
+      </div>
+    );
+  }
+
+  if (status === "authenticated") {
+    redirect("/dashboard");
+  }
+
   return (
     <main className="">
-      <div>session: {session?.user?.name}</div>
-      <div>status: {status}</div>
+      {/* <div>session: {session?.user?.name}</div> */}
+      {/* <div>status: {status}</div> */}
       <section className="text-center py-5 sm:py-10 md:py-32 px-10 mx-auto max-w-[1200px]">
         <p className="text-2xl font-semibold sm:text-4xl md:text-7xl mb-10 dark:text-primary-light">
           Welcome to <span className="italic">NoteEdit</span>, your personalized
           digital hub for intuitive note-taking.
         </p>
-        <button className="rounded-lg py-3 px-9 bg-primary-dark text-primary-light dark:bg-primary-light dark:text-primary-dark">
-          Get Started
-        </button>
+        <Link href="/dashboard">
+          <button className="rounded-lg py-3 px-9 bg-primary-dark text-primary-light dark:bg-primary-light dark:text-primary-dark">
+            Get Started
+          </button>
+        </Link>
       </section>
 
       <section className="text-center pb-20 mt-10 sm:mt-0 sm:pb-32 px-10 mx-auto max-w-[1150px]">

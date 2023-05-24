@@ -67,8 +67,6 @@ export default function Home() {
 
   return (
     <main className="">
-      {/* <div>session: {session?.user?.name}</div> */}
-      {/* <div>status: {status}</div> */}
       <section className="text-center py-5 sm:py-10 md:py-32 px-10 mx-auto max-w-[1200px]">
         <p className="text-2xl font-semibold sm:text-4xl md:text-7xl mb-10 dark:text-primary-light">
           Welcome to <span className="italic">NoteEdit</span>, your personalized
@@ -143,15 +141,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <footer className="text-secondary-light text-center p-5 flex flex-col sm:flex-row items-center justify-center">
-        <div className="mb-5 sm:mr-10 sm:mb-0">
-          The source code is available on my GitHub.
-        </div>
-        <div className="text-xl cursor-pointer" onClick={toggleTheme}>
-          {theme === "light" ? <BsSun /> : <TbMoonStars />}
-        </div>
-      </footer>
     </main>
   );
 }
